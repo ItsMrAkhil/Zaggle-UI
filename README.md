@@ -1,4 +1,4 @@
-#GIT REPO
+# GIT REPO
 https://github.com/ItsMrAkhil/Zaggle-UI.git
-#TITLE
+# TITLE
 Zaggle new UI
