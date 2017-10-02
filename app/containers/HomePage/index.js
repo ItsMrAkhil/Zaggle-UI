@@ -43,7 +43,7 @@ export class HomePage extends React.PureComponent {
     onSearchRestaurants();
   }
 
-  renderRestaurants() {
+  renderRestaurants(city) {
     const { restaurants, fetchingRestaurants } = this.props.homepage;
     if (!restaurants.length && !fetchingRestaurants) {
       return <Message color="red">No restaurants found with given filters.</Message>;
@@ -54,6 +54,7 @@ export class HomePage extends React.PureComponent {
         <Restaurant
           key={id}
           {...restaurant}
+          city={city}
         />
       );
     });
@@ -134,7 +135,7 @@ export class HomePage extends React.PureComponent {
             />
           </Grid.Row>
         </Grid>
-        {this.renderRestaurants()}
+        {this.renderRestaurants(filters.city)}
         <center>
           <Pagination
             prev

@@ -2,12 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Card, Icon, Image, Container, Rating } from 'semantic-ui-react';
+import slug from 'slug';
 
 export default function RestaurantGridItem(props) {
   const {
     merchant_image, merchant_name, location,
     cashback_deals, distance, group_deals,
-    rating, merchant_id,
+    rating, merchant_id, city,
   } = props;
   const imageUrl = `https://mobile-api.zaggle.in/images/merchants/${merchant_image}`;
   let cashBackLabel;
@@ -20,9 +21,12 @@ export default function RestaurantGridItem(props) {
       ribbon: true,
     };
   }
+  // /restaurant/:city/:slugName/
+  const slugCity = slug(city || '', { lowercase: true });
+  const slugName = slug(merchant_name || '', { lowercase: true });
   return (
     <Card color="teal">
-      <Link to={`/${merchant_id}`}>
+      <Link to={`/restaurant/${slugCity}/${slugName}/${merchant_id}`}>
         <Image
           src={imageUrl}
           className="cover"
@@ -53,5 +57,6 @@ RestaurantGridItem.propTypes = {
   distance: PropTypes.string,
   group_deals: PropTypes.string,
   merchant_id: PropTypes.string,
+  city: PropTypes.string,
   rating: PropTypes.number,
 };

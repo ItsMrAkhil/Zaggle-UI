@@ -57,7 +57,7 @@ export function App({ searchText, onChangeSearchText, onSearch, location }) {
       <Container style={{ paddingTop: '1em' }}>
         <Switch location={location}>
           <Route exact path="/" component={HomePage} />
-          <Route exact path="/:restaurantId" component={RestaurantPage} />
+          <Route exact path="/restaurant/:city/:slugName/:restaurantId" component={RestaurantPage} />
           <Route component={NotFoundPage} />
         </Switch>
       </Container>
